@@ -1,13 +1,30 @@
-Check failure on line 1 in .github/workflows/main.yml
 
+name: Java CI Build
 
-GitHub Actions
-/ .github/workflows/main.yml
-Invalid workflow file
+on:
+  push:
+    branches:
+      - main
 
-(Line: 1, Col: 7): A sequence was not expected
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+
+      - name: Maven Build
+        run: mvn clean package
+
+      - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: java-build-files
-          path: |
-            Main.class
+          path: target/*.war
