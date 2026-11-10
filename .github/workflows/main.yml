@@ -1,4 +1,11 @@
-      - name: Upload Build Files
+Check failure on line 1 in .github/workflows/main.yml
+
+
+GitHub Actions
+/ .github/workflows/main.yml
+Invalid workflow file
+
+(Line: 1, Col: 7): A sequence was not expected
         uses: actions/upload-artifact@v4
         with:
           name: java-build-files
